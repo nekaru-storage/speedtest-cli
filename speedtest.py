@@ -1195,8 +1195,9 @@ class Speedtest(object):
         up_sizes = [32768, 65536, 131072, 262144, 524288, 1048576, 7340032]
         sizes = {
             'upload': up_sizes[ratio - 1:],
-            'download': [350, 500, 750, 1000, 1500, 2000, 2500,
-                         3000, 3500, 4000]
+            'download': [245388, 505544, 1118012, 1986284, 4468241,
+                         7907740, 12407926, 17816816, 24262167,
+                         31625365]
         }
 
         size_count = len(sizes['upload'])
@@ -1539,8 +1540,8 @@ class Speedtest(object):
         urls = []
         for size in self.config['sizes']['download']:
             for _ in range(0, self.config['counts']['download']):
-                urls.append('%s/random%sx%s.jpg' %
-                            (os.path.dirname(self.best['url']), size, size))
+                urls.append('%s/download?size=%s' %
+                            (os.path.dirname(os.path.dirname(self.best['url'])), size))
 
         request_count = len(urls)
         requests = []
